@@ -190,7 +190,7 @@ def perform_migrate_pages(args):
     for page in redmine_project.get_all_pages():
         print("Collecting " + page["title"])
         start_version = page["version"] if args.no_history else 1
-        for version in range(start_version, page["version"]+1):
+        for version in range(int(start_version), int(page["version"])+1):
             try:
                 full_page = redmine_project.get_page(page["title"], version)
                 pages.append(full_page)
